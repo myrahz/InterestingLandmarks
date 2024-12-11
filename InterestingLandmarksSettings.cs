@@ -57,7 +57,7 @@ namespace InterestingLandmarks
 
         [Menu("Show essences")]
         public ToggleNode ShowEssence { get; set; } = new ToggleNode(true);
-        [Menu("Essence transition color")]
+        [Menu("Essence color")]
         public ColorNode EssenceColor { get; set; } = new ColorNode(Color.Purple);
     }
 }
