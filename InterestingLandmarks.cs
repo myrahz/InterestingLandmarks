@@ -60,7 +60,7 @@ namespace InterestingLandmarks
                                     break;
                             }
 
-                            Graphics.DrawText(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), color);
+                            Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), color, Color.Black);
                         }
                     }
                 }
@@ -70,7 +70,7 @@ namespace InterestingLandmarks
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.AreaTransition])
                     {
-                        Graphics.DrawText(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.TransitionsColor);
+                        Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.TransitionsColor, Color.Black);
                     }
                 }
 
@@ -79,7 +79,7 @@ namespace InterestingLandmarks
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.IngameIcon])
                     {
-                        Graphics.DrawText(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.PoIColor);
+                        Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.PoIColor, Color.Black);
                     }
                 }
 
@@ -88,8 +88,20 @@ namespace InterestingLandmarks
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.Waypoint])
                     {
-                        Graphics.DrawText(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.WaypointsColor);
+                        Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.WaypointsColor, Color.Black);
                     }
+                }
+				
+		// Secret Switches
+                if (Settings.ShowSwitch)
+                {
+                    foreach (var e in allEntities.ValidEntitiesByType[EntityType.Terrain])
+		    {
+			if (e.Path.Contains ("Switch"))
+			{
+			    Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.SwitchColor, Color.Black);
+			}
+		    }
                 }
 
                 // Essences
@@ -99,7 +111,7 @@ namespace InterestingLandmarks
                     {
                         if (!e.GetComponent<Monolith>().IsOpened)
                         {
-                            Graphics.DrawText("Essence", GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.EssenceColor);
+                            Graphics.DrawTextWithBackground("Essence", GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.EssenceColor, Color.Black);
                         }
                     }
                 }
