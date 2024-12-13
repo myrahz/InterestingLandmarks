@@ -79,7 +79,15 @@ namespace InterestingLandmarks
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.IngameIcon])
                     {
-                        Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.PoIColor, Color.Black);
+			{
+			    Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.PoIColor, Color.Black);
+			}
+					
+			if (e.Path.Contains ("ExpeditionMarker"))
+			{
+			    break;
+			}
+						
                     }
                 }
 
@@ -112,6 +120,18 @@ namespace InterestingLandmarks
                         if (!e.GetComponent<Monolith>().IsOpened)
                         {
                             Graphics.DrawTextWithBackground("Essence", GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.EssenceColor, Color.Black);
+                        }
+                    }
+                }
+				
+		// Shrines
+                if (Settings.ShowShrine)
+                {
+                    foreach (var e in allEntities.ValidEntitiesByType[EntityType.Shrine])
+                    {
+                        if (e.IsTargetable)
+                        {
+                            Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.ShrineColor, Color.Black);
                         }
                     }
                 }

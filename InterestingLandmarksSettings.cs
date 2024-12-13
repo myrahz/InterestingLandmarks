@@ -47,6 +47,8 @@ namespace InterestingLandmarks
         public ToggleNode ShowEssence { get; set; } = new ToggleNode(true);
 	[Menu("Show Switches")]
         public ToggleNode ShowSwitch { get; set; } = new ToggleNode(true);
+	[Menu("Show Shrines")]
+        public ToggleNode ShowShrine { get; set; } = new ToggleNode(true);
 		
 		
         [Menu("Area Transition Color")]
@@ -59,5 +61,7 @@ namespace InterestingLandmarks
         public ColorNode EssenceColor { get; set; } = new ColorNode(Color.Purple);
         [Menu("Switch Color")]
         public ColorNode SwitchColor { get; set; } = new ColorNode(Color.Red);
+        [Menu("Shrine Color")]
+        public ColorNode ShrineColor { get; set; } = new ColorNode(Color.Yellow);		
     }
 }
