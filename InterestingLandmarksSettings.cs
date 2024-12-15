@@ -45,12 +45,10 @@ namespace InterestingLandmarks
         public ToggleNode ShowPoI { get; set; } = new ToggleNode(true);
         [Menu("Show Essences")]
         public ToggleNode ShowEssence { get; set; } = new ToggleNode(true);
-	    [Menu("Show Switches")]
+	[Menu("Show Switches")]
         public ToggleNode ShowSwitch { get; set; } = new ToggleNode(true);
-        [Menu("Show Breaches")]
-        public ToggleNode ShowBreach { get; set; } = new ToggleNode(true);
-
-
+		
+		
         [Menu("Area Transition Color")]
         public ColorNode TransitionsColor { get; set; } = new ColorNode(Color.White);
         [Menu("Waypoint Color")]
@@ -58,10 +56,8 @@ namespace InterestingLandmarks
         [Menu("Point of Interest Color")]
         public ColorNode PoIColor { get; set; } = new ColorNode(Color.LightGreen);
         [Menu("Essence Color")]
-        public ColorNode EssenceColor { get; set; } = new ColorNode(Color.Pink);
+        public ColorNode EssenceColor { get; set; } = new ColorNode(Color.Purple);
         [Menu("Switch Color")]
         public ColorNode SwitchColor { get; set; } = new ColorNode(Color.Red);
-        [Menu("Breach Color")]
-        public ColorNode BreachColor { get; set; } = new ColorNode(Color.Purple);
     }
 }

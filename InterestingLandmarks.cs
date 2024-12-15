@@ -79,9 +79,7 @@ namespace InterestingLandmarks
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.IngameIcon])
                     {
-                        if (!e.Path.Contains("Expedition")) {
-                            Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.PoIColor, Color.Black);
-                        }
+                        Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.PoIColor, Color.Black);
                     }
                 }
 
@@ -94,16 +92,16 @@ namespace InterestingLandmarks
                     }
                 }
 				
-		        // Secret Switches
+		// Secret Switches
                 if (Settings.ShowSwitch)
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.Terrain])
-		            {
-			            if (e.Path.Contains ("Switch"))
-			            {
-			            Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.SwitchColor, Color.Black);
-			            }
-		            }
+		    {
+			if (e.Path.Contains ("Switch"))
+			{
+			    Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.SwitchColor, Color.Black);
+			}
+		    }
                 }
 
                 // Essences
@@ -115,15 +113,6 @@ namespace InterestingLandmarks
                         {
                             Graphics.DrawTextWithBackground("Essence", GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.EssenceColor, Color.Black);
                         }
-                    }
-                }
-
-                // Breaches
-                if (Settings.ShowBreach)
-                {
-                    foreach (var e in allEntities.ValidEntitiesByType[EntityType.Breach])
-                    {
-                        Graphics.DrawTextWithBackground("Breach", GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.BreachColor, Color.Black);
                     }
                 }
             }
