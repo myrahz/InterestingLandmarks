@@ -33,7 +33,7 @@ namespace InterestingLandmarks
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.Chest])
                     {
                         var chestComponent = e.GetComponent<Chest>();
-                        if (!e.IsOpened && e.IsTargetable && chestComponent.IsLarge)
+                        if (!e.IsOpened && e.IsTargetable && chestComponent.IsLarge && !e.Path.Contains("Sanctum"))
                         {
                             var color = Color.White;
                             switch (e.Rarity)
@@ -79,15 +79,13 @@ namespace InterestingLandmarks
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.IngameIcon])
                     {
-			{
-			    Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.PoIColor, FontAlign.Center, Color.Black);
-			}
-					
-			if (e.Path.Contains ("ExpeditionMarker"))
-			{
-			    break;
-			}
-						
+                        {
+                            Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.PoIColor, FontAlign.Center, Color.Black);
+                        }
+                        if (e.Path.Contains ("ExpeditionMarker"))
+                        {
+                            break;
+                        }
                     }
                 }
 
@@ -100,16 +98,16 @@ namespace InterestingLandmarks
                     }
                 }
 				
-		// Secret Switches
+		        // Secret Switches
                 if (Settings.ShowSwitch)
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.Terrain])
-		    {
-			if (e.Path.Contains ("Switch"))
-			{
-			    Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.SwitchColor, FontAlign.Center, Color.Black);
-			}
-		    }
+                    {
+                        if (e.Path.Contains ("Switch"))
+                        {
+                            Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.SwitchColor, FontAlign.Center, Color.Black);
+                        }
+                    }
                 }
 
                 // Essences
@@ -124,7 +122,7 @@ namespace InterestingLandmarks
                     }
                 }
 				
-		// Shrines
+		        // Shrines
                 if (Settings.ShowShrine)
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.Shrine])
