@@ -79,7 +79,7 @@ namespace InterestingLandmarks
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.IngameIcon])
                     {
-                        if (!e.Path.Contains ("ExpeditionMarker"))
+                        if (!e.Path.Contains ("Expedition"))
                         {
                             Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.PoIColor, FontAlign.Center, Color.Black);
                         }
