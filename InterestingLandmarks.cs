@@ -60,7 +60,7 @@ namespace InterestingLandmarks
                                     break;
                             }
 
-                            Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), color, Color.Black);
+                            Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), color, FontAlign.Center, Color.Black);
                         }
                     }
                 }
@@ -70,7 +70,7 @@ namespace InterestingLandmarks
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.AreaTransition])
                     {
-                        Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.TransitionsColor, Color.Black);
+                        Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.TransitionsColor, FontAlign.Center, Color.Black);
                     }
                 }
 
@@ -79,7 +79,15 @@ namespace InterestingLandmarks
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.IngameIcon])
                     {
-                        Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.PoIColor, Color.Black);
+			{
+			    Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.PoIColor, FontAlign.Center, Color.Black);
+			}
+					
+			if (e.Path.Contains ("ExpeditionMarker"))
+			{
+			    break;
+			}
+						
                     }
                 }
 
@@ -88,7 +96,7 @@ namespace InterestingLandmarks
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.Waypoint])
                     {
-                        Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.WaypointsColor, Color.Black);
+                        Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.WaypointsColor, FontAlign.Center, Color.Black);
                     }
                 }
 				
@@ -99,7 +107,7 @@ namespace InterestingLandmarks
 		    {
 			if (e.Path.Contains ("Switch"))
 			{
-			    Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.SwitchColor, Color.Black);
+			    Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.SwitchColor, FontAlign.Center, Color.Black);
 			}
 		    }
                 }
@@ -111,7 +119,19 @@ namespace InterestingLandmarks
                     {
                         if (!e.GetComponent<Monolith>().IsOpened)
                         {
-                            Graphics.DrawTextWithBackground("Essence", GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.EssenceColor, Color.Black);
+                            Graphics.DrawTextWithBackground("Essence", GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.EssenceColor, FontAlign.Center, Color.Black);
+                        }
+                    }
+                }
+				
+		// Shrines
+                if (Settings.ShowShrine)
+                {
+                    foreach (var e in allEntities.ValidEntitiesByType[EntityType.Shrine])
+                    {
+                        if (e.IsTargetable)
+                        {
+                            Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.ShrineColor, FontAlign.Center, Color.Black);
                         }
                     }
                 }
