@@ -79,12 +79,9 @@ namespace InterestingLandmarks
                 {
                     foreach (var e in allEntities.ValidEntitiesByType[EntityType.IngameIcon])
                     {
+                        if (!e.Path.Contains ("ExpeditionMarker"))
                         {
                             Graphics.DrawTextWithBackground(e.GetComponent<MinimapIcon>().Name, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.PoIColor, FontAlign.Center, Color.Black);
-                        }
-                        if (e.Path.Contains ("ExpeditionMarker"))
-                        {
-                            break;
                         }
                     }
                 }
@@ -131,6 +128,15 @@ namespace InterestingLandmarks
                         {
                             Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.ShrineColor, FontAlign.Center, Color.Black);
                         }
+                    }
+                }
+                 
+                // Breaches
+                if (Settings.ShowBreach)
+                {
+                    foreach (var e in allEntities.ValidEntitiesByType[EntityType.Breach])
+                    {
+                        Graphics.DrawTextWithBackground("Breach", GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), Settings.BreachColor, Color.Black);
                     }
                 }
             }
