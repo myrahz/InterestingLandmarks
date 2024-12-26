@@ -52,7 +52,7 @@ namespace InterestingLandmarks
         [Menu("Show Breaches")]
         public ToggleNode ShowBreach { get; set; } = new ToggleNode(true);
         [Menu("Show Rituals")]
-        public ToggleNode ShowRituals { get; set; } = new ToggleNode(true); // Updated the property name to plural for consistency
+        public ToggleNode ShowRituals { get; set; } = new ToggleNode(true);
 
         [Menu("Area Transition Color")]
         public ColorNode TransitionsColor { get; set; } = new ColorNode(Color.White);
@@ -69,6 +69,6 @@ namespace InterestingLandmarks
         [Menu("Breach Color")]
         public ColorNode BreachColor { get; set; } = new ColorNode(Color.Purple);
         [Menu("Ritual Color")]
-        public ColorNode RitualColor { get; set; } = new ColorNode(Color.Orange); // Corrected the property name
+        public ColorNode RitualColor { get; set; } = new ColorNode(Color.Orange);
     }
 }

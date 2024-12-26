@@ -29,7 +29,7 @@ namespace InterestingLandmarks
                 }
 
                 var allEntities = GameController.EntityListWrapper;
-                // Render entities based on type and settings using helper method
+                // Render entities based on type and settings using helpers
                 RenderEntities(allEntities, Settings.ShowChests, EntityType.Chest, RenderChest);
                 RenderEntities(allEntities, Settings.ShowTransitions, EntityType.AreaTransition, RenderTransition);
                 RenderEntities(allEntities, Settings.ShowPoI, EntityType.IngameIcon, RenderPoI);
@@ -38,7 +38,6 @@ namespace InterestingLandmarks
                 RenderEntities(allEntities, Settings.ShowEssence, EntityType.Monolith, RenderEssence);
                 RenderEntities(allEntities, Settings.ShowShrine, EntityType.Shrine, RenderShrine);
                 RenderEntities(allEntities, Settings.ShowBreach, EntityType.Breach, RenderBreach);
-                // Handle Rituals separately as they don't have a predefined entity type
                 RenderEntities(allEntities, Settings.ShowRituals, EntityType.Terrain, RenderRitual);
             }
             catch { }
@@ -67,7 +66,8 @@ namespace InterestingLandmarks
                 }
             }
         }
-
+		
+		// Chests code updated, put this here to remind that may need reverted if errors
         private Color? GetChestColor(MonsterRarity rarity, InterestingLandmarksSettings settings)
         {
             return rarity switch
@@ -126,7 +126,8 @@ namespace InterestingLandmarks
         {
             Graphics.DrawTextWithBackground("Breach", GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), settings.BreachColor, Color.Black);
         }
-
+		
+		// Added RitualRune which shows up in maps but may not work during campaign
         private void RenderRitual(Entity e, InterestingLandmarksSettings settings)
         {
             if (e.Path.Contains("RitualRune"))
