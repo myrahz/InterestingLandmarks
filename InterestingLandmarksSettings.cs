@@ -13,7 +13,7 @@ namespace InterestingLandmarks
         public ToggleNode ShowChests { get; set; } = new ToggleNode(true);
 
         [Menu("Chests", 100, CollapsedByDefault = true)]
-        public EmptyNode SettingsEmptyChest { get; set; }
+        public EmptyNode SettingsEmptyChest { get; set; } = new();
 
         [Menu("White Chests", parentIndex = 100)]
         public ToggleNode ShowWhiteChests { get; set; } = new ToggleNode(true);
@@ -23,12 +23,12 @@ namespace InterestingLandmarks
         public ToggleNode ShowRareChests { get; set; } = new ToggleNode(true);
         [Menu("Unique Chests", parentIndex = 100)]
         public ToggleNode ShowUniqueChests { get; set; } = new ToggleNode(true);
-        [Menu("Other (?) Chests", parentIndex = 100)]
+        [Menu("Other Chests", parentIndex = 100)]
         public ToggleNode ShowOtherChests { get; set; } = new ToggleNode(true);
 
-        [Menu("White Chest color", parentIndex = 100)]
+        [Menu("White Chest Color", parentIndex = 100)]
         public ColorNode WhiteChestColor { get; set; } = new ColorNode(Color.White);
-        [Menu("Magic Chest color", parentIndex = 100)]
+        [Menu("Magic Chest Color", parentIndex = 100)]
         public ColorNode MagicChestColor { get; set; } = new ColorNode(Color.Blue);
         [Menu("Rare Chest Color", parentIndex = 100)]
         public ColorNode RareChestColor { get; set; } = new ColorNode(Color.Yellow);
@@ -45,14 +45,15 @@ namespace InterestingLandmarks
         public ToggleNode ShowPoI { get; set; } = new ToggleNode(true);
         [Menu("Show Essences")]
         public ToggleNode ShowEssence { get; set; } = new ToggleNode(true);
-	    [Menu("Show Switches")]
+        [Menu("Show Switches")]
         public ToggleNode ShowSwitch { get; set; } = new ToggleNode(true);
-	    [Menu("Show Shrines")]
+        [Menu("Show Shrines")]
         public ToggleNode ShowShrine { get; set; } = new ToggleNode(true);
         [Menu("Show Breaches")]
         public ToggleNode ShowBreach { get; set; } = new ToggleNode(true);
-		
-		
+        [Menu("Show Rituals")]
+        public ToggleNode ShowRituals { get; set; } = new ToggleNode(true);
+
         [Menu("Area Transition Color")]
         public ColorNode TransitionsColor { get; set; } = new ColorNode(Color.White);
         [Menu("Waypoint Color")]
@@ -67,5 +68,7 @@ namespace InterestingLandmarks
         public ColorNode ShrineColor { get; set; } = new ColorNode(Color.Yellow);
         [Menu("Breach Color")]
         public ColorNode BreachColor { get; set; } = new ColorNode(Color.Purple);
+        [Menu("Ritual Color")]
+        public ColorNode RitualColor { get; set; } = new ColorNode(Color.Orange);
     }
 }
