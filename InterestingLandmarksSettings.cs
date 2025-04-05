@@ -36,6 +36,33 @@ namespace InterestingLandmarks
         public ColorNode UniqueChestColor { get; set; } = new ColorNode(Color.Orange);
         [Menu("Other Chest Color", parentIndex = 100)]
         public ColorNode OtherChestColor { get; set; } = new ColorNode(Color.Gray);
+        [Menu("Show Strongboxs")]
+        public ToggleNode ShowStrongboxs { get; set; } = new ToggleNode(true);
+
+        [Menu("Strongboxs", 100, CollapsedByDefault = true)]
+        public EmptyNode SettingsEmptyStrongbox { get; set; } = new();
+
+        [Menu("White Strongboxs", parentIndex = 100)]
+        public ToggleNode ShowWhiteStrongboxs { get; set; } = new ToggleNode(true);
+        [Menu("Magic Strongboxs", parentIndex = 100)]
+        public ToggleNode ShowMagicStrongboxs { get; set; } = new ToggleNode(true);
+        [Menu("Rare Strongboxs", parentIndex = 100)]
+        public ToggleNode ShowRareStrongboxs { get; set; } = new ToggleNode(true);
+        [Menu("Unique Strongboxs", parentIndex = 100)]
+        public ToggleNode ShowUniqueStrongboxs { get; set; } = new ToggleNode(true);
+        [Menu("Other Strongboxs", parentIndex = 100)]
+        public ToggleNode ShowOtherStrongboxs { get; set; } = new ToggleNode(true);
+
+        [Menu("White Strongbox Color", parentIndex = 100)]
+        public ColorNode WhiteStrongboxColor { get; set; } = new ColorNode(Color.White);
+        [Menu("Magic Strongbox Color", parentIndex = 100)]
+        public ColorNode MagicStrongboxColor { get; set; } = new ColorNode(Color.Blue);
+        [Menu("Rare Strongbox Color", parentIndex = 100)]
+        public ColorNode RareStrongboxColor { get; set; } = new ColorNode(Color.Yellow);
+        [Menu("Unique Strongbox Color", parentIndex = 100)]
+        public ColorNode UniqueStrongboxColor { get; set; } = new ColorNode(Color.Orange);
+        [Menu("Other Strongbox Color", parentIndex = 100)]
+        public ColorNode OtherStrongboxColor { get; set; } = new ColorNode(Color.Gray);
 
         [Menu("Show Area Transitions")]
         public ToggleNode ShowTransitions { get; set; } = new ToggleNode(true);
@@ -44,7 +71,9 @@ namespace InterestingLandmarks
         [Menu("Show Points of Interest (Minimap Icons)")]
         public ToggleNode ShowPoI { get; set; } = new ToggleNode(true);
         [Menu("Show Essences")]
-        public ToggleNode ShowEssence { get; set; } = new ToggleNode(true);
+        public ToggleNode ShowEssence { get; set; } = new ToggleNode(true);        
+        [Menu("Show Wisps")]
+        public ToggleNode ShowWisps { get; set; } = new ToggleNode(true);
         [Menu("Show Switches")]
         public ToggleNode ShowSwitch { get; set; } = new ToggleNode(true);
         [Menu("Show Shrines")]
@@ -52,7 +81,9 @@ namespace InterestingLandmarks
         [Menu("Show Breaches")]
         public ToggleNode ShowBreach { get; set; } = new ToggleNode(true);
         [Menu("Show Rituals")]
-        public ToggleNode ShowRituals { get; set; } = new ToggleNode(true);
+        public ToggleNode ShowRituals { get; set; } = new ToggleNode(true);        
+		[Menu("Show Delirium Spawns")]
+        public ToggleNode ShowDeliSpawns { get; set; } = new ToggleNode(true);
 
         [Menu("Area Transition Color")]
         public ColorNode TransitionsColor { get; set; } = new ColorNode(Color.White);
@@ -70,5 +101,8 @@ namespace InterestingLandmarks
         public ColorNode BreachColor { get; set; } = new ColorNode(Color.Purple);
         [Menu("Ritual Color")]
         public ColorNode RitualColor { get; set; } = new ColorNode(Color.Orange);
+        [Menu("Delirium Spawns Color")]
+        public ColorNode DeliSpawnColor { get; set; } = new ColorNode(Color.Orange);
+        public ColorNode WispsColor { get; set; } = new ColorNode(Color.Orange);
     }
 }

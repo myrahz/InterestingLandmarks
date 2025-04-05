@@ -31,6 +31,8 @@ namespace InterestingLandmarks
                 var allEntities = GameController.EntityListWrapper;
                 // Render entities based on type and settings using helpers
                 RenderEntities(allEntities, Settings.ShowChests, EntityType.Chest, RenderChest);
+                RenderEntities(allEntities, Settings.ShowWisps, EntityType.Monster, RenderWisps);
+                RenderEntities(allEntities, Settings.ShowStrongboxs, EntityType.Chest, RenderStrongbox);
                 RenderEntities(allEntities, Settings.ShowTransitions, EntityType.AreaTransition, RenderTransition);
                 RenderEntities(allEntities, Settings.ShowPoI, EntityType.IngameIcon, RenderPoI);
                 RenderEntities(allEntities, Settings.ShowWaypoints, EntityType.Waypoint, RenderWaypoint);
@@ -39,6 +41,7 @@ namespace InterestingLandmarks
                 RenderEntities(allEntities, Settings.ShowShrine, EntityType.Shrine, RenderShrine);
                 RenderEntities(allEntities, Settings.ShowBreach, EntityType.Breach, RenderBreach);
                 RenderEntities(allEntities, Settings.ShowRituals, EntityType.Terrain, RenderRitual);
+                RenderEntities(allEntities, Settings.ShowDeliSpawns, EntityType.Monster, RenderDeliSpawns);
             }
             catch { }
         }
@@ -65,6 +68,18 @@ namespace InterestingLandmarks
                     Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), color.Value, FontAlign.Center, Color.Black);
                 }
             }
+        }        
+        private void RenderStrongbox(Entity e, InterestingLandmarksSettings settings)
+        {
+            var chestComponent = e.GetComponent<Chest>();
+            if (!e.IsOpened && e.IsTargetable && e.Path.Contains("Strongbox") && !e.Path.Contains("Sanctum"))
+            {
+                var color = GetStrongboxColor(e.Rarity, settings);
+                if (color.HasValue)
+                {
+                    Graphics.DrawTextWithBackground(e.RenderName, GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), color.Value, FontAlign.Center, Color.Black);
+                }
+            }
         }
 		
 		// Chests code updated, put this here to remind that may need reverted if errors
@@ -77,6 +92,17 @@ namespace InterestingLandmarks
                 MonsterRarity.Rare => settings.ShowRareChests ? settings.RareChestColor : (Color?)null,
                 MonsterRarity.Unique => settings.ShowUniqueChests ? settings.UniqueChestColor : (Color?)null,
                 _ => settings.ShowOtherChests ? settings.OtherChestColor : (Color?)null,
+            };
+        }        
+        private Color? GetStrongboxColor(MonsterRarity rarity, InterestingLandmarksSettings settings)
+        {
+            return rarity switch
+            {
+                MonsterRarity.White => settings.ShowWhiteStrongboxs ? settings.WhiteStrongboxColor : (Color?)null,
+                MonsterRarity.Magic => settings.ShowMagicStrongboxs ? settings.MagicStrongboxColor : (Color?)null,
+                MonsterRarity.Rare => settings.ShowRareStrongboxs ? settings.RareStrongboxColor : (Color?)null,
+                MonsterRarity.Unique => settings.ShowUniqueStrongboxs ? settings.UniqueStrongboxColor : (Color?)null,
+                _ => settings.ShowOtherStrongboxs ? settings.OtherStrongboxColor : (Color?)null,
             };
         }
 
@@ -133,6 +159,21 @@ namespace InterestingLandmarks
             if (e.Path.Contains("RitualRune"))
             {
                 Graphics.DrawTextWithBackground("Ritual", GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), settings.RitualColor, FontAlign.Center, Color.Black);
+            }
+        }		// Added RitualRune which shows up in maps but may not work during campaign
+		
+        private void RenderDeliSpawns(Entity e, InterestingLandmarksSettings settings)
+        {
+            if (e.Path.Contains("DoodadDaemonShardPack"))
+            {
+                Graphics.DrawTextWithBackground("Deli", GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), settings.DeliSpawnColor, FontAlign.Center, Color.Black);
+            }
+        }        
+        private void RenderWisps(Entity e, InterestingLandmarksSettings settings)
+        {
+            if (e.Path.Contains("Metadata/Monsters/TormentedSpirits/TormentedSpirit"))
+            {
+                Graphics.DrawTextWithBackground("Wisp", GameController.IngameState.Data.GetGridMapScreenPosition(e.GridPos), settings.WispsColor, FontAlign.Center, Color.Black);
             }
         }
     }
